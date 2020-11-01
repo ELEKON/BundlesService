@@ -1,12 +1,7 @@
 package com.assessment.BundlesService.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.UniqueElements;
-import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -27,21 +22,21 @@ public class Product implements Serializable {
     @Column(name = "product_name")
     private String name;
 
-    @NotNull
+    @NotNull(message = "name can not be null")
     @DecimalMin("0.00")
     @Column(name = "product_price", nullable = false)
     private BigDecimal productPrice;
 
-    @NotBlank
+    @NotBlank(message = "name can not be null")
     @Column(name = "product_code", unique = true)
     private String productCode;
 
-    @FutureOrPresent
+    @FutureOrPresent(message = "date can not be past")
     @Column(name = "product_expiration_date")
     private LocalDate productExpirationDate;
 
-    @NotNull
-    @FutureOrPresent
+    @NotNull(message = "name can not be null")
+    @FutureOrPresent(message = "date can not be past")
     @Column(name = "availability_date")
     private LocalDate availabilityDate;
 
