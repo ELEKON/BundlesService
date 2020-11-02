@@ -35,7 +35,7 @@ public class Product implements Serializable {
     @Column(name = "product_expiration_date")
     private LocalDate productExpirationDate;
 
-    @NotNull(message = "name can not be null")
+    @NotNull(message = "date can not be null")
     @FutureOrPresent(message = "date can not be past")
     @Column(name = "availability_date")
     private LocalDate availabilityDate;

@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class RestExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleAllExceptionMethod(Exception ex) {
-
         ExceptionMessage exceptionMessageObj =
-                new ExceptionMessage(new Throwable(ex.getMessage().substring(ex.getMessage().indexOf("default message")),ex.getCause()));
-
+                new ExceptionMessage(new Throwable(ex.getMessage(),ex.getCause()));
         return new ResponseEntity<>(exceptionMessageObj, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
